@@ -10,4 +10,5 @@ export interface ITest {
   cover?: string;
   descr?: string;
   items: ITestItem[];
+  isIncognito?: boolean;
 }

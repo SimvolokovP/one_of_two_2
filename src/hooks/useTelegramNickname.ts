@@ -8,7 +8,7 @@ export function useTelegramNickname(test?: ITest) {
   const [error, setError] = useState<string | null>(null);
 
   const fetchAuthorNickname = async () => {
-    if (!test?.author) {
+    if (!test?.author || test.isIncognito) {
       setNickname("Unknown");
       return;
     }
