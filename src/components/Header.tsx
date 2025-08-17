@@ -10,8 +10,10 @@ export function Header() {
       <div className="container">
         {user && (
           <div className="w-full flex items-center justify-between mb-2">
-            <div>Привет, {getUsername(user)}</div>
-            <Avatar src={user.photo_url} alt={user.id.toString()} />
+            <div className="flex items-center gap-2">
+              <Avatar size={28} src={user.photo_url} alt={user.id.toString()} />
+              <div>Привет, {getUsername(user)} &#129306;</div>
+            </div>
           </div>
         )}
       </div>

@@ -3,8 +3,9 @@
 
 @theme {
   --color-background: var(--tg-theme-bg-color);
-  --color-main: #030528;
-  --color-accent: var(--tgui--accent_text_color);
+  --color-main: var(--tg-theme-text-color);
+  --color-accent: var(--tg-theme-accent-text-color);
+  --color-secondary: var(--tg-theme-secondary-bg-color);
 }
 
 html {
