@@ -15,7 +15,8 @@ const MainPage = () => {
          <ActionsList />
 
           <HeadingItem
-            title="Актуальные тесты"
+            title="Актуальные тесты &#128205;"
+
             description="Самые высокооцененные тесты от наших авторов за неделю."
           >
             <TestsList tests={recentTestsQuery.data} error={recentTestsQuery.error} isPending={recentTestsQuery.isPending} />
