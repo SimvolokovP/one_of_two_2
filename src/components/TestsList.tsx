@@ -18,7 +18,7 @@ export function TestsList({
   }
 
   if ((!tests || tests.length === 0) && !isPending) {
-    return <div className="text-secondary p-4">No tests available</div>;
+    return <div className="text-hint p-4">No tests available</div>;
   }
 
   return (

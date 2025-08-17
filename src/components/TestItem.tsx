@@ -20,7 +20,7 @@ export function TestItem({ test }: { test?: ITest }) {
                 className="block object-cover w-full h-40"
               />
             ) : (
-              <div className="bg-gray-100 dark:bg-gray-800 w-full h-40 flex items-center justify-center">
+              <div className="w-full h-40 flex items-center justify-center">
                 <span className="text-gray-400">No image</span>
               </div>
             )}
