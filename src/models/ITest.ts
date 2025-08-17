@@ -5,6 +5,7 @@ export interface ITestItem {
 
 export interface ITest {
   id: string;
+  title: string;
   author: string;
   cover?: string;
   descr?: string;

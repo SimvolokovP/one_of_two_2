@@ -18,7 +18,7 @@ const MainPage = () => {
             title="Актуальные тесты"
             description="Самые высокооцененные тесты от наших авторов за неделю."
           >
-            <TestsList tests={recentTestsQuery.data} />
+            <TestsList tests={recentTestsQuery.data} error={recentTestsQuery.error} isPending={recentTestsQuery.isPending} />
           </HeadingItem>
         </div>
       </div>

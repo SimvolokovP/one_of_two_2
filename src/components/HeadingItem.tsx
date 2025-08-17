@@ -13,7 +13,7 @@ export function HeadingItem({
   return (
     <div>
       <div className="text-accent text-xl font-bold mb-2">{title}</div>
-      <div className="text-main font-light text-base mb-2">{description}</div>
+      <div className="text-main font-light text-base mb-4">{description}</div>
       {children}
     </div>
   );

@@ -6,25 +6,23 @@
   --color-main: var(--tg-theme-text-color);
   --color-accent: var(--tg-theme-accent-text-color);
   --color-secondary: var(--tg-theme-secondary-bg-color);
+  --color-errpr: var(--tg-theme-destructive-text-color);
 }
 
-html {
+/* html {
   touch-action: none;
   height: 100lvh;
   overflow: hidden;
-}
+} */
 
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 500;
   background: var(--tg-theme-bg-color);
-
-  height: 100lvh;
-  overflow: hidden;
 }
 
 .container {
-  @apply max-w-7xl mx-auto my-0 py-0 px-10;
+  @apply max-w-7xl mx-auto my-0 py-0 px-3;
 }
 
 .tgui-8e15431b81f6601e .tgui-db9be63c4fecf79b {
@@ -41,4 +39,12 @@ body {
 
 .tgui-38580a5c868cecc4 {
   gap: 1px;
+}
+
+.swiper-scrollbar {
+  background: var(--tg-theme-secondary-bg-color) !important;
+}
+
+.swiper-scrollbar-drag {
+  background: var(--tg-theme-accent-text-color) !important;
 }
