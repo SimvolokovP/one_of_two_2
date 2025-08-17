@@ -28,8 +28,8 @@ export function TestItem({ test }: { test?: ITest }) {
             className="block object-cover w-full h-40"
           />
         ) : (
-          <div className="w-full h-40 flex items-center justify-center bg-gray-100 dark:bg-gray-800">
-            <span className="text-gray-400">No image</span>
+          <div className="w-full h-40 flex items-center justify-center">
+            <span className="text-hint">No image</span>
           </div>
         )}
         <CardCell readOnly className="flex-grow">
