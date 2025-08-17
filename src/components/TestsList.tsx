@@ -2,7 +2,8 @@ import type { ITest } from "../models/ITest";
 import type { FirestoreError } from "firebase/firestore";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar } from "swiper/modules";
-import { TestItem, TestItemSkeleton } from "./TestItem";
+import { TestItem } from "./TestItem";
+import { TestItemSkeleton } from "./skeletons/TestItemSkeleton";
 
 export function TestsList({
   tests,
