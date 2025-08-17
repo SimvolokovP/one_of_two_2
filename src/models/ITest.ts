@@ -3,6 +3,10 @@ export interface ITestItem {
   value: string;
 }
 
+export interface ITag {
+  value: string;
+}
+
 export interface ITest {
   id: string;
   title: string;
@@ -11,4 +15,5 @@ export interface ITest {
   descr?: string;
   items: ITestItem[];
   isIncognito?: boolean;
+  tags: ITag[];
 }

@@ -4,6 +4,7 @@ import { CardChip } from "@telegram-apps/telegram-ui/dist/components/Blocks/Card
 import { Fragment } from "react/jsx-runtime";
 import type { ITest } from "../models/ITest";
 import { useTelegramNickname } from "../hooks/useTelegramNickname";
+import { TestDescrModal } from "./TestDescrModal";
 
 export function TestItem({ test }: { test?: ITest }) {
   const { nickname, error, isLoading } = useTelegramNickname(test);
@@ -13,7 +14,7 @@ export function TestItem({ test }: { test?: ITest }) {
   }
 
   return (
-    <Card className="w-full h-full flex flex-col mb-4">
+    <Card className="w-full h-full flex flex-col mb-4 relative">
       <Fragment key=".0">
         <CardChip readOnly>
           <div className="bg-secondary/50 p-1 rounded-sm">
@@ -34,6 +35,7 @@ export function TestItem({ test }: { test?: ITest }) {
         <CardCell readOnly className="flex-grow">
           {test.title}
         </CardCell>
+        <TestDescrModal test={test} />
       </Fragment>
     </Card>
   );

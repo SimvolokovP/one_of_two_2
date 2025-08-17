@@ -1,9 +1,11 @@
 import type { JSX } from "react";
+import { PAGES } from "../router/pages.config";
 
 interface INavigationItem {
   id: number;
   text: string;
   icon: JSX.Element;
+  to: string;
 }
 
 export const NAVIGATION: INavigationItem[] = [
@@ -26,6 +28,7 @@ export const NAVIGATION: INavigationItem[] = [
         />
       </svg>
     ),
+    to: PAGES.COLLECTION,
   },
   {
     id: 2,
@@ -46,6 +49,7 @@ export const NAVIGATION: INavigationItem[] = [
         />
       </svg>
     ),
+    to: PAGES.MY_TESTS,
   },
   {
     id: 3,
@@ -66,5 +70,6 @@ export const NAVIGATION: INavigationItem[] = [
         />
       </svg>
     ),
+    to: PAGES.SEARCH,
   },
 ];
