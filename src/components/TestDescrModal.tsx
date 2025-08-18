@@ -21,7 +21,7 @@ export function TestDescrModal({ test }: { test: ITest }) {
         {test.tags && (
           <ul className="flex flex-wrap gap-2 w-full justify-start">
             {test.tags.map((tag) => (
-              <li>
+              <li key={tag.value}>
                 <TagItem tag={tag} />
               </li>
             ))}

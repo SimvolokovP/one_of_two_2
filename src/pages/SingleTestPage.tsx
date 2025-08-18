@@ -5,6 +5,7 @@ import { useTestById } from "../hooks/useTestById";
 import { useState } from "react";
 import { Button } from "@telegram-apps/telegram-ui";
 import { SingleTestSkeleton } from "../components/skeletons/SingleTestSkeleton";
+import { TestBattle } from "../components/TestBattle";
 
 const SingleTestPage = () => {
   const { id } = useParams();
@@ -54,9 +55,10 @@ const SingleTestPage = () => {
               )}
             </div>
           ) : (
-            <div className="p-4">
-              <p>Тест начат!</p>
-            </div>
+            <TestBattle
+              items={test?.items}
+              onFinish={() => console.log("WINNER")}
+            />
           )}
         </div>
       </div>

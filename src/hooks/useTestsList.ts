@@ -8,6 +8,7 @@ export function useTestsList() {
 
   const query = useCollectionQuery(collectionRef, {
     queryKey: ["tests"],
+    
   });
 
   const data = query.data?.docs.map((doc) => ({
