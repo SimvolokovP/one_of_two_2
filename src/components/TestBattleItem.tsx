@@ -9,7 +9,7 @@ export function TestBattleItem({
   item: ITestItem;
   handleChoice: (item: ITestItem) => void;
 }) {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(!item.file);
 
   return (
     <div className="flex flex-col gap-2">
@@ -33,7 +33,11 @@ export function TestBattleItem({
           <div className="text-hint text-xl md:text-2xl">{item.value}</div>
         </div>
       )}
-      <Button onClick={() => handleChoice(item)} className="w-full">
+      <Button
+        disabled={!isImageLoaded}
+        onClick={() => handleChoice(item)}
+        className="w-full"
+      >
         {item.value}
       </Button>
     </div>

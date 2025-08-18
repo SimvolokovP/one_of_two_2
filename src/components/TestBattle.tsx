@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import type { ITestItem } from "../models/ITest";
 import { TestBattleItem } from "./TestBattleItem";
+import { WinnerScreen } from "./WinnerScreen";
 
 interface TestBattleProps {
   items?: ITestItem[];
@@ -13,6 +14,8 @@ export const TestBattle = ({ items, onFinish }: TestBattleProps) => {
   const [currentItems, setCurrentItems] = useState<ITestItem[]>([]);
   const [pair, setPair] = useState<ITestItem[]>([]);
   const [winner, setWinner] = useState<ITestItem | null>(null);
+  const [resultItems, setResultItems] = useState<ITestItem[]>([]);
+  //   const [totalPairs, setTotalPairs] = useState(0);
 
   useEffect(() => {
     if (items && items.length > 0) {
@@ -20,6 +23,8 @@ export const TestBattle = ({ items, onFinish }: TestBattleProps) => {
       setCurrentItems(shuffled);
       setCurrentRound(1);
       setCurrentPair(1);
+      setResultItems([]);
+      //   setTotalPairs(shuffled.length / 2);
     }
   }, [items]);
 
@@ -33,7 +38,24 @@ export const TestBattle = ({ items, onFinish }: TestBattleProps) => {
     }
   }, [currentItems, onFinish]);
 
+  //   const getRoundName = (roundNumber: number, totalPairs: number) => {
+  //     const remainingPairs = totalPairs / Math.pow(2, roundNumber - 1);
+
+  //     if (remainingPairs >= 32) return `Раунд ${roundNumber}`;
+  //     if (remainingPairs === 16) return `1/16 финала`;
+  //     if (remainingPairs === 8) return `1/8 финала`;
+  //     if (remainingPairs === 4) return `1/4 финала`;
+  //     if (remainingPairs === 2) return `Полуфинал`;
+  //     if (remainingPairs === 1) return `Финал`;
+  //     return `Раунд ${roundNumber}`;
+  //   };
+
   const handleChoice = (selectedItem: ITestItem) => {
+    const loser = pair.find((item) => item !== selectedItem);
+    if (loser) {
+      setResultItems((prev) => [loser, ...prev]);
+    }
+
     const newItems = currentItems.filter(
       (item) => item !== pair[0] && item !== pair[1]
     );
@@ -49,19 +71,7 @@ export const TestBattle = ({ items, onFinish }: TestBattleProps) => {
   };
 
   if (winner) {
-    return (
-      <div className="text-center p-4">
-        <h2 className="text-xl font-bold mb-4">Победитель!</h2>
-        <p className="text-lg">{winner.value}</p>
-        {winner.file && (
-          <img
-            src={winner.file}
-            alt={winner.value}
-            className="mt-4 mx-auto max-h-60 rounded-lg"
-          />
-        )}
-      </div>
-    );
+    return <WinnerScreen winner={winner} results={resultItems} />;
   }
 
   if (pair.length < 2) {
@@ -71,7 +81,7 @@ export const TestBattle = ({ items, onFinish }: TestBattleProps) => {
   return (
     <div className="flex flex-col gap-6">
       <div className="text-center">
-        <h3 className="text-lg font-medium">Раунд {currentRound}</h3>
+        <h3 className="text-lg font-medium">Раунд №{currentRound}</h3>
         <p className="text-hint">Выберите лучший вариант:</p>
       </div>
 
