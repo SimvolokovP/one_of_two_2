@@ -31,10 +31,11 @@ export function TestHeader({ round, currentItems }: TestHeaderProps) {
     popup
       .open({
         title: "Завершить тест?",
-        message: "Завершить тест?",
+        message:
+          "Вы уверены, что хотите завершить тест? Результаты не будут сохранены.",
         buttons: [
-          { id: "ok", type: "default", text: "Да" },
-          { id: "no", type: "close" },
+          { id: "close", type: "close" },
+          { id: "ok", type: "ok" },
         ],
       })
       .then((buttonId) => {

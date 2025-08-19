@@ -27,7 +27,15 @@ const SingleTestPage = () => {
   }
 
   return (
-    <TelegramNavigation backPath={PAGES.MAIN}>
+    <TelegramNavigation
+      isPopup
+      backPath={PAGES.MAIN}
+      popupMessage={
+        isStart
+          ? "Вы уверены, что хотите завершить тест? Результаты не будут сохранены."
+          : undefined
+      }
+    >
       <div>
         <div className="container">
           {!isStart ? (
