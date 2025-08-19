@@ -2,7 +2,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Header } from "./components/Header";
 import { AppRouter } from "./router/AppRouter";
 
+//@ts-ignore
 import "swiper/css";
+//@ts-ignore
 import "swiper/css/scrollbar";
 import { Footer } from "./components/Footer";
 

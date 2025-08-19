@@ -15,6 +15,7 @@ import {
   backButton,
   miniApp,
   settingsButton,
+  viewport,
 } from "@telegram-apps/sdk-react";
 
 export async function init(options: {
@@ -78,6 +79,10 @@ export async function init(options: {
 
   mountBackButton.ifAvailable();
   settingsButton.mount();
+
+  if (viewport.isMounted()) {
+    viewport.expand();
+  }
 
   restoreInitData();
   await Promise.all([

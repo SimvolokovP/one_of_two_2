@@ -14,7 +14,7 @@ export function TestItem({ test }: { test?: ITest }) {
   }
 
   return (
-    <Card className="w-full h-full flex flex-col mb-4 relative">
+    <Card className="w-full h-full flex flex-col mb-4 relative select-none">
       <Fragment key=".0">
         <CardChip readOnly>
           <div className="bg-secondary/50 p-1 rounded-sm">
