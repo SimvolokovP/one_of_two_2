@@ -28,7 +28,7 @@ const startApp = async () => {
 
     root.render(
       <StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename="/one_of_two_2">
           <AppRoot>
             <App />
           </AppRoot>
