@@ -6,7 +6,7 @@ import { TestHeader } from "./TestHeader";
 
 interface TestBattleProps {
   items?: ITestItem[];
-  onFinish: (winner: ITestItem) => void;
+  onFinish: () => void;
 }
 
 export const TestBattle = ({ items, onFinish }: TestBattleProps) => {
@@ -44,7 +44,7 @@ export const TestBattle = ({ items, onFinish }: TestBattleProps) => {
       setPair(newPair);
     } else if (currentItems.length === 1) {
       setWinner(currentItems[0]);
-      onFinish(currentItems[0]);
+      onFinish();
     }
   }, [currentItems, onFinish]);
 

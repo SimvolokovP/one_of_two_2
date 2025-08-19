@@ -5,8 +5,9 @@ import { Fragment } from "react/jsx-runtime";
 import type { ITest } from "../models/ITest";
 import { useTelegramNickname } from "../hooks/useTelegramNickname";
 import { TestDescrModal } from "./TestDescrModal";
+import type { TListType } from "./TestsList";
 
-export function TestItem({ test }: { test?: ITest }) {
+export function TestItem({ test, type }: { test?: ITest; type: TListType }) {
   const { nickname, error, isLoading } = useTelegramNickname(test);
 
   if (!test) {
@@ -14,7 +15,11 @@ export function TestItem({ test }: { test?: ITest }) {
   }
 
   return (
-    <Card className="w-full h-full flex flex-col mb-4 relative select-none">
+    <Card
+      className={`w-full h-full flex flex-col relative select-none ${
+        type === "carousel" ? "mb-4" : ""
+      }`}
+    >
       <Fragment key=".0">
         <CardChip readOnly>
           <div className="bg-secondary/50 p-1 rounded-sm">

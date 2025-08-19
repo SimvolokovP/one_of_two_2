@@ -11,6 +11,7 @@ const SingleTestPage = () => {
   const { id } = useParams();
   const { test, error, isPending } = useTestById(id);
   const [isStart, setIsStart] = useState<boolean>(false);
+  const [isWinner, setIsWinner] = useState<boolean>(false);
 
   if (error) {
     return (
@@ -25,10 +26,10 @@ const SingleTestPage = () => {
       </TelegramNavigation>
     );
   }
-
+  
   return (
     <TelegramNavigation
-      isPopup
+      isPopup={isStart && !isWinner}
       backPath={PAGES.MAIN}
       popupMessage={
         isStart
@@ -65,7 +66,7 @@ const SingleTestPage = () => {
           ) : (
             <TestBattle
               items={test?.items}
-              onFinish={() => console.log("WINNER")}
+              onFinish={() => setIsWinner(true)}
             />
           )}
         </div>
