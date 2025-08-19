@@ -79,10 +79,8 @@ export async function init(options: {
 
   mountBackButton.ifAvailable();
   settingsButton.mount();
-
-  if (viewport.isMounted()) {
-    viewport.expand();
-  }
+  viewport.mount();
+  viewport.expand();
 
   restoreInitData();
   await Promise.all([

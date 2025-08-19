@@ -12,7 +12,7 @@ export function TestBattleItem({
   const [isImageLoaded, setIsImageLoaded] = useState(!item.file);
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 flex-1">
       {item.file ? (
         <Skeleton
           className="w-full h-40 md:h-90 rounded-lg"
