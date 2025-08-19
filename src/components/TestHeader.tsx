@@ -1,5 +1,8 @@
 import { Button } from "@telegram-apps/telegram-ui";
 import type { ITestItem } from "../models/ITest";
+import { popup } from "@telegram-apps/sdk-react";
+import { useNavigate } from "react-router-dom";
+import { PAGES } from "../router/pages.config";
 
 interface TestHeaderProps {
   round: number;
@@ -8,10 +11,7 @@ interface TestHeaderProps {
   currentPair?: number;
 }
 
-export function TestHeader({
-  round,
-  currentItems,
-}: TestHeaderProps) {
+export function TestHeader({ round, currentItems }: TestHeaderProps) {
   const getRoundName = () => {
     const remainingPairs = Math.ceil(currentItems.length / 2);
     // const totalRounds = Math.log2(testLength);
@@ -25,10 +25,22 @@ export function TestHeader({
     return `Раунд ${round}`;
   };
 
-  //   const getPairInfo = () => {
-  //     const remainingPairs = Math.ceil(currentItems.length / 2);
-  //     return `Пара ${currentPair} из ${remainingPairs}`;
-  //   };
+  const navigate = useNavigate();
+
+  const handleExit = () => {
+    popup
+      .open({
+        title: "Завершить тест?",
+        message: "Завершить тест?",
+        buttons: [
+          { id: "ok", type: "default", text: "Да" },
+          { id: "no", type: "close" },
+        ],
+      })
+      .then((buttonId) => {
+        buttonId === "ok" && navigate(PAGES.MAIN);
+      });
+  };
 
   return (
     <div className="flex w-full justify-between items-center">
@@ -36,7 +48,7 @@ export function TestHeader({
         <div className="text-lg font-medium">{getRoundName()}</div>
         <p className="text-hint">Выберите лучший вариант:</p>
       </div>
-      <Button>Завершить</Button>
+      <Button onClick={handleExit}>Завершить</Button>
     </div>
   );
 }
