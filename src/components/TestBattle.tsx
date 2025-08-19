@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import type { ITestItem } from "../models/ITest";
 import { TestBattleItem } from "./TestBattleItem";
 import { WinnerScreen } from "./WinnerScreen";
+import { TestHeader } from "./TestHeader";
 
 interface TestBattleProps {
   items?: ITestItem[];
@@ -9,6 +10,8 @@ interface TestBattleProps {
 }
 
 export const TestBattle = ({ items, onFinish }: TestBattleProps) => {
+  const [testLength, setTestLength] = useState(0);
+
   const [currentRound, setCurrentRound] = useState(1);
   const [currentPair, setCurrentPair] = useState(1);
   const [currentItems, setCurrentItems] = useState<ITestItem[]>([]);
@@ -16,6 +19,13 @@ export const TestBattle = ({ items, onFinish }: TestBattleProps) => {
   const [winner, setWinner] = useState<ITestItem | null>(null);
   const [resultItems, setResultItems] = useState<ITestItem[]>([]);
   //   const [totalPairs, setTotalPairs] = useState(0);
+
+  useEffect(() => {
+    if (items && items.length) {
+      setTestLength(items.length);
+      console.log(testLength);
+    }
+  }, [items]);
 
   useEffect(() => {
     if (items && items.length > 0) {
@@ -79,11 +89,13 @@ export const TestBattle = ({ items, onFinish }: TestBattleProps) => {
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="text-center">
-        <h3 className="text-lg font-medium">Раунд №{currentRound}</h3>
-        <p className="text-hint">Выберите лучший вариант:</p>
-      </div>
+    <div className="flex flex-col gap-4 md:gap-6">
+      <TestHeader
+        round={currentRound}
+        testLength={testLength}
+        currentItems={currentItems}
+        currentPair={currentPair}
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
         {pair.map((item, index) => (

@@ -30,7 +30,7 @@ export function ResultsModal({
                 key={index}
                 className="flex items-center gap-3 p-2 border-b border-hint"
               >
-                <span className="font-medium">{index + 1}.</span>
+                <span className="font-medium">{index + 2}.</span>
 
                 <span>{item.value}</span>
               </div>
