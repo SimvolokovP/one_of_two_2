@@ -4,4 +4,5 @@ export const PAGES = {
   SEARCH: "/search",
   MY_TESTS: "/my",
   COLLECTION: "/collection",
+  CREATE: "/create",
 };
